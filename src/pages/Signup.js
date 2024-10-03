@@ -8,7 +8,7 @@ function Signup() {
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
 
-    const navigate = useNavigate();  // Hook to handle navigation
+    const navigate = useNavigate();  
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,13 +30,13 @@ function Signup() {
 
         // Save the user in localStorage
         const userData = { email, password };
-        localStorage.setItem('user', JSON.stringify(userData));  // Store user data as a JSON string
+        localStorage.setItem('user', JSON.stringify(userData));  
 
-        // Set a success message and redirect to the login page
+        // Success message 
         setMessage('Signup successful! Please log in.');
         setTimeout(() => {
-            navigate('/login');  // Redirect to the login page
-        }, 2000);  // Wait 2 seconds before redirecting
+            navigate('/login');  
+        }, 2000);  
     };
 
     return (
