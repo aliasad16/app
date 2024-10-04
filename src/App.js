@@ -19,7 +19,6 @@ function App() {
     setIsAuthenticated(false);
   };
 
-  
   useEffect(() => {
     if (authError) {
       const timer = setTimeout(() => {
@@ -36,8 +35,8 @@ function App() {
   return (
     <Router>
       <div className="relative">
-        {/* Header */}
-        <header className="bg-indigo-700 text-white shadow-md">
+        {/* Header with Gradient Background */}
+        <header className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white shadow-md">
           <div className="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 className="text-3xl font-bold tracking-wide">My App</h1>
             <nav>
@@ -46,7 +45,7 @@ function App() {
                 <li>
                   <NavLink
                     to="/"
-                    className="text-white text-lg transition duration-300 hover:text-indigo-400 focus:outline-none"
+                    className="text-white text-lg transition duration-300 hover:text-indigo-200 focus:outline-none"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 'bold' : 'normal',
                     })}
@@ -57,7 +56,7 @@ function App() {
                 <li>
                   <NavLink
                     to="/login"
-                    className="text-white text-lg transition duration-300 hover:text-indigo-400 focus:outline-none"
+                    className="text-white text-lg transition duration-300 hover:text-indigo-200 focus:outline-none"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 'bold' : 'normal',
                     })}
@@ -68,7 +67,7 @@ function App() {
                 <li>
                   <NavLink
                     to="/signup"
-                    className="text-white text-lg transition duration-300 hover:text-indigo-400 focus:outline-none"
+                    className="text-white text-lg transition duration-300 hover:text-indigo-200 focus:outline-none"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 'bold' : 'normal',
                     })}
@@ -81,7 +80,7 @@ function App() {
                     <li>
                       <NavLink
                         to="/dashboard"
-                        className="text-white text-lg transition duration-300 hover:text-indigo-400 focus:outline-none"
+                        className="text-white text-lg transition duration-300 hover:text-indigo-200 focus:outline-none"
                         style={({ isActive }) => ({
                           fontWeight: isActive ? 'bold' : 'normal',
                         })}
@@ -93,7 +92,7 @@ function App() {
                       {/* Logout  */}
                       <span
                         onClick={handleLogout}
-                        className="text-white text-lg cursor-pointer transition duration-300 hover:text-indigo-400 focus:outline-none"
+                        className="text-white text-lg cursor-pointer transition duration-300 hover:text-indigo-200 focus:outline-none"
                       >
                         Logout
                       </span>

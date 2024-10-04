@@ -1,30 +1,41 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Home() {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <div className="bg-white p-10 rounded-lg shadow-lg max-w-md w-full text-center">
-                <h1 className="text-4xl font-extrabold text-gray-800 mb-6">Welcome!</h1>
-                <p className="mb-8 text-gray-600 text-lg">Please choose an option below:</p>
-                <div className="flex flex-col space-y-4">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">
+            <div className="bg-white bg-opacity-20 backdrop-blur-lg p-10 rounded-lg shadow-2xl max-w-lg w-full text-center">
+                <h1 className="text-5xl font-extrabold text-white mb-6 animate-pulse">Welcome to the Adventure!</h1>
+                <p className="mb-8 text-lg text-white">
+                    Your journey to something amazing starts here. Are you ready to explore?
+                </p>
+
+                <div className="grid grid-cols-2 gap-6 mb-8">
                     <Link 
                         to="/login" 
-                        className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105"
+                        className="bg-purple-700 hover:bg-purple-800 text-white font-semibold py-4 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 hover:rotate-2"
                     >
-                        Login
+                        Log In
                     </Link>
                     <Link 
                         to="/signup" 
-                        className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105"
+                        className="bg-pink-600 hover:bg-pink-700 text-white font-semibold py-4 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 hover:-rotate-2"
                     >
-                        Signup
+                        Sign Up
                     </Link>
                 </div>
+
                 <div className="mt-6">
-                    <p className="text-sm text-gray-500">Already have an account? <Link to="/login" className="text-indigo-600 hover:underline">Log in</Link></p>
+                    <p className="text-sm text-white">
+                        Already on board? <Link to="/login" className="underline hover:text-yellow-300">Log back in</Link> and continue your adventure!
+                    </p>
                 </div>
+            </div>
+
+            <div className="absolute bottom-10 text-center">
+                <p className="text-sm text-white opacity-70">
+                    "The greatest adventure is what lies ahead." 
+                </p>
             </div>
         </div>
     );

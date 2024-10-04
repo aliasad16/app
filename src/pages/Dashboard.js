@@ -9,7 +9,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  // Fetch all items (users) from JSONPlaceholder API
+  // Fetch all items 
   useEffect(() => {
     const loadItems = async () => {
       setLoading(true);
