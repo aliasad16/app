@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Signup() {
+    const [username, setUsername] = useState(''); // New state for username
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -10,7 +11,7 @@ function Signup() {
 
     const navigate = useNavigate();  
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setMessage('');
         setError('');
@@ -28,15 +29,40 @@ function Signup() {
             return;
         }
 
-        // Save the user in localStorage
-        const userData = { email, password };
-        localStorage.setItem('user', JSON.stringify(userData));  
+        // Check if username is not empty
+        if (username.trim() === '') {
+            setError('Username is required');
+            return;
+        }
 
-        // Success message 
-        setMessage('Signup successful! Please log in.');
-        setTimeout(() => {
-            navigate('/login');  
-        }, 2000);  
+        // Prepare user data for API
+        const userData = { username, email, password };
+
+        try {
+            const response = await fetch('https://ebd83320-70dc-40bc-8ad4-00ffe6338376.mock.pstmn.io/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // API response indicates success
+                setMessage('Signup successful! Please log in.');
+                setTimeout(() => {
+                    navigate('/login');  // Redirect to login after successful signup
+                }, 2000);
+            } else {
+                // API returned an error (e.g., email already exists)
+                setError(data.message || 'Signup failed. Please try again.');
+            }
+        } catch (err) {
+            // Handle network or other errors
+            setError('An error occurred. Please try again.');
+        }
     };
 
     return (
@@ -46,6 +72,16 @@ function Signup() {
                 {message && <p className="text-green-500 text-sm mb-4">{message}</p>}
                 {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
                 <form onSubmit={handleSubmit}>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Username:</label>
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)} // Update username state
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring focus:ring-indigo-300"
+                            required
+                        />
+                    </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">Email:</label>
                         <input
